@@ -1,9 +1,9 @@
 # Laravel Test
-De website in deze repository heeft veel bugs en is niet erg goed geschreven. De onderstaande onderdelen zijn ontworpen om te testen hoe je deze problemen aanpakt en nieuwe functies toe te voegen.
+De website in deze repository heeft veel bugs en is niet erg goed geschreven. De onderstaande onderdelen zijn ontworpen om te testen hoe je deze problemen aanpakt en nieuwe functies toevoegd.
 
-We maken ons geen zorgen over de lay-out of styling van de pagina.
+We maken ons geen zorgen over de lay-out of styling van de pagina. 
 
-Gelieve dit archief te klonen en uw wijzigingen voor elk onderdeel vast te leggen.
+Gelieve deze respository te klonen en je wijzigingen voor elk onderdeel vast te leggen. In nette commit berichten.
 
 ## Deel 1
 
@@ -32,8 +32,8 @@ Momenteel doet het "tags" veld in het formulier niets. We willen graag tags aanm
 
 * Maak een nieuw Tag model, en een nieuwe pivot tabel om de producten te koppelen aan de Tags (many-to-many).
 * Neem de tags string wanneer het formulier wordt ingediend en splits deze op komma's.
-* Maak een tag aan voor elk van deze producten - maar alleen als deze uniek is.
-* Koppel het product aan elke tag (of de tags nu nieuw waren of al eerder bestonden).
+* Maak een tag aan voor elk van deze items - maar alleen als deze uniek is.
+* Koppel het product aan elk geselecteerde tag (of de tags nu nieuw waren of al eerder bestonden).
 
 ## Deel 6
 
