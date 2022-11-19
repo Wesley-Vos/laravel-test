@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -20,14 +19,14 @@ class ProductController extends Controller
             'name' => 'required|alpha_dash|unique:products|min:3|max:255',
         ]);
 
-        DB::insert("INSERT INTO products (name) VALUES ('".$validated['name']."')");
+        Product::create($validated);
 
         return redirect(route('products.index'))->with('status', 'Product saved');
     }
 
-    public function delete(Request $request)
+    public function delete(Product $product)
     {
-        DB::delete("DELETE FROM products WHERE id = ".$request->id);
+        $product->delete();
 
         return redirect(route('products.index'))->with('status', 'Product was deleted');
     }
