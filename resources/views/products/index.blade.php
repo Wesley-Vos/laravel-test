@@ -34,6 +34,14 @@
             @foreach ($products as $product)
             <li>
                 <b>{{ $product->name }}</b>
+                @if (!is_null($product->description))
+                    <p>@foreach ($product->splitDescription as $line)
+                        {{ $line }}<br>
+                    @endforeach
+                    </p>
+                @else
+                    <p><em>No description.</em></p>
+                @endif
                 <form action="{{ route('products.delete', $product) }}" method="POST">
                     @csrf
                     @method('DELETE')
