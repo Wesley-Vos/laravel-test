@@ -11,6 +11,18 @@
                 color: green;
             }
 
+            .alert-box {
+                background-color: lightgrey;
+                border-radius: 4px;
+                width: 50%;
+                padding: 5px 20px 5px;
+                color: black;
+            }
+
+            .alert-box h3 {
+                color: red;
+            }
+
         </style>
     </head>
     <body>
@@ -42,6 +54,16 @@
         </div>
         @endif
 
+        @if ($errors->any())
+            <div class="alert-box">
+                <h3>There {{ count($errors) > 1 ? "are multiple errors" : "is an error" }} with the new product</h3>
+                <div>
+                    @foreach ($errors->all() as $error)
+                        <p>{{ $error }}</p>
+                    @endforeach
+                </div>
+            </div>
+        @endif
 
 
         <h2>New product</h2>
