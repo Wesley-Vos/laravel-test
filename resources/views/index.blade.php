@@ -7,6 +7,6 @@
         <title>HOME</title>
     </head>
     <body>
-        <a href="/products">Manage products</a>
+        <a href="{{ route('products.index') }}">Manage products</a>
     </body>
 </html>

@@ -11,6 +11,18 @@
                 color: green;
             }
 
+            .alert-box {
+                background-color: lightgrey;
+                border-radius: 4px;
+                width: 50%;
+                padding: 5px 20px 5px;
+                color: black;
+            }
+
+            .alert-box h3 {
+                color: red;
+            }
+
         </style>
     </head>
     <body>
@@ -22,7 +34,7 @@
             @foreach (\App\Product::all() as $product)
             <li>
                 {!! $product->name !!}
-                <form action="/products/delete" method="POST">
+                <form action="{{ route('products.delete') }}" method="POST">
                     @csrf
                     <input type="hidden" name="id" value="@php(print $product->id)"/>
                     <button type="submit">delete</button>
@@ -42,10 +54,20 @@
         </div>
         @endif
 
+        @if ($errors->any())
+            <div class="alert-box">
+                <h3>There {{ count($errors) > 1 ? "are multiple errors" : "is an error" }} with the new product</h3>
+                <div>
+                    @foreach ($errors->all() as $error)
+                        <p>{{ $error }}</p>
+                    @endforeach
+                </div>
+            </div>
+        @endif
 
 
         <h2>New product</h2>
-        <form action="/products/new" method="POST">
+        <form action="{{ route('products.new') }}" method="POST">
             @csrf
             <input type="text" name="name" placeholder="name" /><br />
             <textarea name="description" placeholder="description"></textarea><br />

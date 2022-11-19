@@ -16,15 +16,19 @@ class ProductController extends Controller
 
     public function new(Request $request)
     {
-        DB::insert("INSERT INTO products (name) VALUES ('".$request->name."')");
+        $validated = $request->validate([
+            'name' => 'required|alpha_dash|unique:products|min:3|max:255',
+        ]);
 
-        return redirect('/products')->with('status', 'Product saved');
+        DB::insert("INSERT INTO products (name) VALUES ('".$validated['name']."')");
+
+        return redirect(route('products.index'))->with('status', 'Product saved');
     }
 
     public function delete(Request $request)
     {
         DB::delete("DELETE FROM products WHERE id = ".$request->id);
 
-        return redirect('/products')->with('status', 'Product was deleted');
+        return redirect(route('products.index'))->with('status', 'Product was deleted');
     }
 }
