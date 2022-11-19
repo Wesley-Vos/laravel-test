@@ -33,7 +33,7 @@
         <ul>
             @foreach ($products as $product)
             <li>
-                {!! $product->name !!}
+                <b>{{ $product->name }}</b>
                 <form action="{{ route('products.delete', $product) }}" method="POST">
                     @csrf
                     @method('DELETE')
