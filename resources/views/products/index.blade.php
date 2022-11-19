@@ -22,7 +22,7 @@
             @foreach (\App\Product::all() as $product)
             <li>
                 {!! $product->name !!}
-                <form action="/products/delete" method="POST">
+                <form action="{{ route('products.delete') }}" method="POST">
                     @csrf
                     <input type="hidden" name="id" value="@php(print $product->id)"/>
                     <button type="submit">delete</button>
@@ -45,7 +45,7 @@
 
 
         <h2>New product</h2>
-        <form action="/products/new" method="POST">
+        <form action="{{ route('products.new') }}" method="POST">
             @csrf
             <input type="text" name="name" placeholder="name" /><br />
             <textarea name="description" placeholder="description"></textarea><br />

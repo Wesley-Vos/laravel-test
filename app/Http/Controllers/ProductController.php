@@ -18,13 +18,13 @@ class ProductController extends Controller
     {
         DB::insert("INSERT INTO products (name) VALUES ('".$request->name."')");
 
-        return redirect('/products')->with('status', 'Product saved');
+        return redirect(route('products.index'))->with('status', 'Product saved');
     }
 
     public function delete(Request $request)
     {
         DB::delete("DELETE FROM products WHERE id = ".$request->id);
 
-        return redirect('/products')->with('status', 'Product was deleted');
+        return redirect(route('products.index'))->with('status', 'Product was deleted');
     }
 }
