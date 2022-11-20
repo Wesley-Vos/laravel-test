@@ -18,7 +18,8 @@ class ProductController extends Controller
     public function new(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|alpha_dash|unique:products|min:3|max:255',
+            'name' => 'required|alpha_dash|unique:products|min:3|max:64',
+            'description' => 'max:255'
         ]);
 
         Product::create($validated);
