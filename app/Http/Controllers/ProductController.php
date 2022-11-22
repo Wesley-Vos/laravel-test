@@ -17,13 +17,15 @@ class ProductController extends Controller
 
     public function new(Request $request, ProductService $productService)
     {
-        $validated = $request->validate([
+        $productData = $request->validate([
             'name' => 'required|alpha_dash|unique:products|min:3|max:64',
-            'description' => 'max:255'
+            'description' => 'max:255',
         ]);
-        $productService->create($validated);
+        $tags = array_unique(explode(',', $request->tags));
 
-        return redirect(route('products.index'))->with('status', 'Product saved');
+        $productService->create($productData, $tags);
+
+        return redirect(route('products.index'))->with('status', 'Product named '.$productData['name'].' is saved');
     }
 
     public function delete(Product $product, ProductService $productService)
