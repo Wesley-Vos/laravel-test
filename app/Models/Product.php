@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\ProductCreated;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
@@ -19,10 +20,13 @@ class Product extends Model
 
     protected $appends = array('splitDescription');
 
+    protected $dispatchesEvents = [
+        'created' => ProductCreated::class,
+    ];
+
     /**
      * Get the product's multiline description split by newlines
      *
-     * @param  string  $value
      * @return array   description split by newlines
      */
     public function getSplitDescriptionAttribute()
