@@ -126,7 +126,7 @@
         @if ($errors->any())
             <div class="card" style="border-color: red">
                 <div class="card-header" style="border-color: red">
-                    <h3>There {{ count($errors) > 1 ? "are multiple errors" : "is an error" }} with the new product</h3>
+                    <h4>There {{ count($errors) > 1 ? "are multiple errors" : "is an error" }} with the new product</h4>
                 </div>
 
                 <div class="card-body">
@@ -145,9 +145,9 @@
             <form action="{{ route('products.new') }}" method="POST">
                 @csrf
                 <div class="card-body">
-                    <input type="text" name="name" placeholder="name" /><br />
-                    <textarea name="description" placeholder="description"></textarea><br />
-                    <input type="text" name="tags" placeholder="tags" /><br />
+                    <input type="text" name="name" placeholder="name" value="{{ old('name') }}" /><br />
+                    <textarea name="description" placeholder="description">{{ old('description') }}</textarea><br />
+                    <input type="text" name="tags" placeholder="tags" value="{{ old('tags') }}" /><br />
                 </div>
                 <div class="card-footer">
                     <button class="btn" type="submit">Create</button>

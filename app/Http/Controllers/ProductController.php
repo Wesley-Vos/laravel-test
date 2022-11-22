@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateProductRequest;
 use App\Models\Product;
 use App\Services\ProductService;
-use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -16,12 +16,9 @@ class ProductController extends Controller
         ]);
     }
 
-    public function new(Request $request, ProductService $productService)
+    public function new(CreateProductRequest $request, ProductService $productService)
     {
-        $productData = $request->validate([
-            'name' => 'required|alpha_dash|unique:products|min:3|max:64',
-            'description' => 'max:255',
-        ]);
+        $productData = $request->validated();
         $tags = array_unique(explode(',', $request->tags));
 
         $productService->create($productData, $tags);
