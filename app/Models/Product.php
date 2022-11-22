@@ -41,4 +41,9 @@ class Product extends Model
     {
         $this->attributes['description'] = empty($value) ? NULL : $value;
     }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
 }
