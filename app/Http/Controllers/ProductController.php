@@ -10,8 +10,9 @@ class ProductController extends Controller
 {
     public function index()
     {
+        // eager load the tags together with the products
         return view('products.index', [
-            'products' => Product::all()
+            'products' => Product::with('tags')->get()
         ]);
     }
 
