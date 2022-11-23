@@ -34,6 +34,11 @@ class ProductService
         $product->tags()->attach($tag_ids);
     }
 
+    public function detachTag(Product $product, Tag $tag)
+    {
+        $product->tags()->detach($tag->id);
+    }
+
     public function delete(Product $product)
     {
         $product->delete();

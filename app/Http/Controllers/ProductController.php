@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateProductRequest;
 use App\Models\Product;
+use App\Models\Tag;
 use App\Services\ProductService;
 
 class ProductController extends Controller
@@ -31,5 +32,12 @@ class ProductController extends Controller
         $productService->delete($product);
 
         return redirect(route('products.index'))->with('status', 'Product was deleted');
+    }
+
+    public function removeTag(Product $product, Tag $tag, ProductService $productService)
+    {
+        $productService->detachTag($product, $tag);
+
+        return redirect(route('products.index'));
     }
 }

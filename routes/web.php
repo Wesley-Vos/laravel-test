@@ -18,3 +18,4 @@ Route::get('/', 'HomeController@index');
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::post('/products/new', [ProductController::class, 'new'])->name('products.new');
 Route::delete('/products/delete/{product}', [ProductController::class, 'delete'])->name('products.delete');
+Route::post('/products/remove_tag/{product}/{tag}', [ProductController::class, 'removeTag'])->name('products.remove-tag');
