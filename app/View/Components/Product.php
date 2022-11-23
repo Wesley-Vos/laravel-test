@@ -24,9 +24,9 @@ class Product extends Component
     }
 
     /**
-     * Get the view / contents that represent the component.
+      * Get the view that represent the component.
      *
-     * @return \Illuminate\View\View|string
+     * @return \Illuminate\View\View
      */
     public function render()
     {
