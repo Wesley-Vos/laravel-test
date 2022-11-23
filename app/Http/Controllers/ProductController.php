@@ -54,7 +54,7 @@ class ProductController extends Controller
     {
         $productService->delete($product);
 
-        return redirect(route('products.index'))->with('status', 'Product was deleted');
+        return redirect(route('products.index'))->with('status', 'Product named '.$product->name.' is removed');
     }
 
     /**
